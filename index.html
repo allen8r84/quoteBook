@@ -5,13 +5,37 @@
         <link rel="stylesheet" href="style.css" type="text/css"/>
     </head>
     <body ng-controller="mainCtrl">
-    <div ng-repeat="x in data">
+    <div>
+        <div ng-show="addQuote">
+            <form ng-submit="addData()">
+                <input type="text" placeholder="add quote" ng-model="quote.text"></input>
+                <input type="text" placeholder="Add Author" ng-model="quote.author"></input>
+                <button ng-click="addData()">ADD!</button>
+            </form>
+        </div>
+        <div ng-show="filterQuote">
+            <input type="text" placeholder="Filter Quote" ng-model="filtTerm.text"></input>
+            <input type="text" placeholder="Filter Author" ng-model="filtTerm.author"></input>
+        </div>
+        <div>
+            <br/>
+            <button ng-click="toggleA()">Add Quote</button>
+            <button ng-click="toggleR()">Remove Quote</button>
+            <button ng-click="toggleF()">Filter quote</button>
+        </div>    
+    </div>
+
+    <div ng-repeat="x in data | filter : filtTerm">
         <h2>{{x.text}}</h2>
-        <em>{{x.author}}</em>
+        <em>~{{x.author}}</em>
+        <div ng-show="removeQuote">
+            <button ng-click="remQuote($index)">REMOVE THIS QUOTE!</button>
+        </div>
         
     </div>
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.3/angular-cookies.js"></script> <!-- adding the angular cookies js for the last step -->
     <script src="js/app.js"></script>
     <script src="js/mainCtrl.js"></script>
     <script src="js/dataService.js"></script>

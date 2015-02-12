@@ -1,1 +1,1 @@
-var app = angular.module('quoteBook', []);
+var app = angular.module('quoteBook', ['ngCookies']); //add 'ngCookies' to the array to reference the cookies

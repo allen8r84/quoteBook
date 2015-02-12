@@ -13,19 +13,13 @@ var quotes = [
   this.getData = function(){
       return quotes;
   };
+  
   this.addData = function(obj) {
-      if (obj.text && obj.author) {
-          quotes.push(obj);
-      };
-      return quotes;
+    quotes.push(obj);
   };
-  this.removeData = function(txt) {
-      for (var i = 0; i < quotes.length; i++) {
-          if (quotes[i].text === txt) {
-              quotes = quotes.splice(i,1);
-          };
-          return quotes;
-      };
+
+  this.removeData = function(obj) {
+    quotes.splice(obj,1);  
   };
 
 });
